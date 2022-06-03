@@ -1,0 +1,4 @@
+insta-virtual/
+.env
+.vscode/
+__pycache__/
