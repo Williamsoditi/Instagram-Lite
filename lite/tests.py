@@ -41,6 +41,7 @@ class FollowTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.follow,Follow))
 
+# Comment model test
 class CommentTestClass(TestCase):
     def setUp(self):
         self.williams = User(username = "williams", email = "williamsoditi99@gmail.com",password = "123qwerty")
@@ -75,5 +76,43 @@ class CommentTestClass(TestCase):
         comments = Comment.get_image_comments(self.basketball)
         self.assertEqual(comments[0].content, 'Killer instinct')
         self.assertTrue(len(comments) > 0)
+
+# Image model test
+class ImageTestClass(TestCase):
+    def setUp(self):
+        self.williams = User(username = "williams", email = "williamsoditi99@yahoo.com",password = "123qwerty")
+        self.profile = Profile(bio='bio', user= self.williams)
+        self.basketball = Image(image = 'imageurl', name ='basketball', caption = 'Killer instinct', profile = self.profile)
+        self.fashion = Image(image = 'imageurl', name ='fashion', caption = 'Luku Ndiriba', profile = self.profile)
+
+        self.williams.save()
+        self.profile.save()
+        self.basketball.save_image()
+
+    def tearDown(self):
+        Image.objects.all().delete()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.basketball, Image))
+
+    def test_save_image_method(self):
+        images = Image.objects.all()
+        self.assertTrue(len(images)> 0)
+
+    def test_delete_image(self):
+        images1 = Image.objects.all()
+        self.assertEqual(len(images1),1)
+        self.basketball.delete_image()
+        images2 = Image.objects.all()
+        self.assertEqual(len(images2),0)
+
+    def test_update_caption(self):
+        self.basketball.update_caption('Killer instinct')
+        self.assertEqual(self.basketball.caption, 'Killer instinct')
+
+    def test_get_profile_images(self):
+        self.fashion.save_image()
+        images = Image.get_profile_images(self.profile)
+        self.assertEqual(len(images),2)
 
 
