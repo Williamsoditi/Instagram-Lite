@@ -41,6 +41,39 @@ class FollowTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.follow,Follow))
 
+class CommentTestClass(TestCase):
+    def setUp(self):
+        self.williams = User(username = "williams", email = "williamsoditi99@gmail.com",password = "123qwerty")
+        self.profile = Profile(bio='bio', user= self.williams)
+        self.basketball = Image(image = 'imageurl', name ='basketball', caption = 'Clique Mambas causing Havoc', profile = self.profile)
+        self.comment = Comment(image=self.basketball, content= 'Killer instinct', user = self.williams)
 
+        self.williams.save()
+        self.profile.save()
+        self.basketball.save_image()
+        self.comment.save_comment()
+
+    def tearDown(self):
+        Image.objects.all().delete()
+        Comment.objects.all().delete()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.comment, Comment))
+
+    def test_save_comment(self):
+        comments = Comment.objects.all()
+        self.assertTrue(len(comments)> 0)
+
+    def test_delete_comment(self):
+        comments1 = Comment.objects.all()
+        self.assertEqual(len(comments1),1)
+        self.comment.delete_comment()
+        comments2 = Comment.objects.all()
+        self.assertEqual(len(comments2),0)
+
+    def test_get_image_comments(self):
+        comments = Comment.get_image_comments(self.basketball)
+        self.assertEqual(comments[0].content, 'Killer instinct')
+        self.assertTrue(len(comments) > 0)
 
 
