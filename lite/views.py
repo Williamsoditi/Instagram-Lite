@@ -72,4 +72,24 @@ def like_image(request,image_id):
         liked = True
     return HttpResponseRedirect(reverse('home'))
 
+@login_required(login_url='/accounts/login/')
+def upload_image(request):
+    title = "Instagram | Upload image"
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(user = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+    if request.method == "POST":
+        form = UploadImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.profile = profile
+            image.save()
+        return redirect('home')
+    else:
+        form = UploadImageForm()
+    return render(request, 'image_upload.html', {"form": form, "title": title})
+
+
 
