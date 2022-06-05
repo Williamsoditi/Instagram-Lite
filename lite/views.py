@@ -5,6 +5,8 @@ from .forms import CreateProfileForm, UploadImageForm, FollowForm, UnfollowForm,
 from django.http import HttpResponseRedirect, Http404
 from .emails import send_signup_email
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -90,6 +92,42 @@ def upload_image(request):
     else:
         form = UploadImageForm()
     return render(request, 'image_upload.html', {"form": form, "title": title})
+
+@login_required(login_url='/accounts/login/')
+def home(request):
+    title= "Instagram"
+    current_user =request.user
+    try:
+        logged_in = Profile.objects.get(user = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+
+    timeline_images = []
+    current_images = Image.objects.filter(profile = logged_in)
+    for current_image in current_images:
+        timeline_images.append(current_image.id)
+
+    current_following = Follow.objects.filter(follower = logged_in)
+    for following in current_following:
+        following_profile = following.followed
+        following_images = Image.get_profile_images(following_profile)
+        for image in following_images:
+            timeline_images.append(image.id)
+
+    display_images= Image.objects.filter(pk__in = timeline_images).order_by('-post_date')
+    liked = False
+    for i in display_images:
+        image = Image.objects.get(pk=i.id)
+        liked = False
+        if image.likes.filter(id =request.user.id).exists():
+            liked = True
+    comments = Comment.objects.all()[:3]
+    comments_count= comments.count()
+
+    suggestions = Profile.objects.all()[:4]
+    print("SUGGESTED")
+    print(suggestions[0])
+    return render(request, 'home.html', {"images":display_images,"liked":liked, "comments":comments, "title":title, "suggestions":suggestions, "loggedIn":logged_in})
 
 
 
