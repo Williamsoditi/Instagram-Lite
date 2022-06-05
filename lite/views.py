@@ -55,3 +55,21 @@ def comment(request, image_id):
     comment.save_comment()
 
     return redirect('home')
+
+def like_image(request,image_id):
+    image = Image.objects.get(pk=image_id)
+    liked = False
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(user = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+    if image.likes.filter(id=profile.id).exists():
+        image.likes.remove(profile)
+        liked = False
+    else:
+        image.likes.add(profile)
+        liked = True
+    return HttpResponseRedirect(reverse('home'))
+
+
