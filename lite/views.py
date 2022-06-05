@@ -90,7 +90,7 @@ def upload_image(request):
         return redirect('home')
     else:
         form = UploadImageForm()
-    return render(request, 'image_upload.html', {"form": form, "title": title})
+    return render(request, 'upload_image.html', {"form": form, "title": title})
 
 @login_required(login_url='/accounts/login/')
 def home(request):
