@@ -23,7 +23,7 @@ def create_profile(request):
 
     else:
         form = CreateProfileForm()
-    return render(request, 'create-profile.html', {"form": form})
+    return render(request, 'create_profile.html', {"form": form})
 
 @login_required(login_url='/accounts/login/')
 def email(request):
