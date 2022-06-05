@@ -16,3 +16,53 @@
 .display-flex{
     display: flex;
 }
+footer {
+    margin: 0 auto 30px auto;
+    max-width: 935px;
+}
+footer ul { margin-bottom: 20px; }
+footer ul li { 
+    margin: 0 10px 10px;
+} 
+footer ul li a { 
+    color: #385185;
+}
+footer .copyright { color: #808080; }
+footer ul li a,
+footer .copyright { 
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+.register{
+    display: flex;
+    justify-content: center;
+    padding: 0 auto;
+}
+.form-data form{
+    background-color: #fff;
+    border: 2px solid #eee;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 4rem;
+    text-align: center;
+}
+.form-data form input{
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border: 2px solid #eee;
+}
+
+.app-download { padding: 15px; }
+.app-download p { padding: 10px 0; }
+.app-download img { 
+    height: 40px; 
+    margin: 0 5px;
+}
+
+@media screen and (max-width: 767px) {
+    main { margin: 30px auto 50px auto; }
+    footer .copyright,
+    footer ul li a { font-size: 13px; }
+}
+
