@@ -1,3 +1,4 @@
+from email.mime import image
 from django.shortcuts import render, redirect
 from .models import Image, Profile, Comment, Follow
 from .forms import CreateProfileForm, UploadImageForm, FollowForm, UnfollowForm, EditBioForm
@@ -44,3 +45,13 @@ def profile_edit(request):
     else:
         form = EditBioForm()
     return render(request, 'edit_profile.html', {"form": form})
+
+def comment(request, image_id):
+    image = Image.objects.get(pk=image_id)
+    content = request.GET.get('comment')
+    print(content)
+    user = request.user
+    comment = Comment( image = image, content = content, user = user)
+    comment.save_comment()
+
+    return redirect('home')
