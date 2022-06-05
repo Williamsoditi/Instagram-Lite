@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="container-fluid">
+    <nav class="navbar">
+        <div class="nav-wrapper">
+            <img src="{% static 'images/instagram-logo.png' %}" alt="Instagram logo" title="Instagram logo" class="brand-img">
+        </div>
+        <div class="nav-items">
+            <a href="{% url 'home' %}"><img src="{% static 'images/nav-home.png' %}" class="icon" alt="home">
+            </a>
+            <img src="{% static 'images/nav-messenger.png' %}" class="icon" alt="home">
+            <img src="{% static 'images/nav-add.png' %}" class="icon" alt="add">
+            <img src="{% static 'images/nav-compass.png' %}" class="icon" alt="explore">
+            <img src="{% static 'images/nav-heart.png' %}" class="icon" alt="heart">
+            <div class="icon user-profile">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+
+        <form role="search" class="form-inline field" action="{% url 'search' %}">
+            <div class="input-group">
+              <input type="text" class="form-control search-box" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1" name="user">
+              <div class="input-group-append" type="submit">
+                <button class="input-group-text btn" type="submit" style="height: 27px!important;"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+        </form>
+    </nav>
+
+</div>
