@@ -21,12 +21,12 @@ from django_registration.backends.one_step.views import RegistrationView
 
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
-    #path('', include('lite.urls')),
-    #path('accounts/', include('django_registration.backends.one_step.urls')),
-    #path('accounts/', include('django.contrib.auth.urls')),
-    #path('logout/', auth_views.LogoutView.as_view()),  
-    #path('accounts/login', LoginView.as_view(redirect_field_name ='/',success_url = '/'), name = 'login'),
-    #path('accounts/logout',LogoutView.as_view(redirect_field_name ='/accounts/login')),
-    #path('accounts/register/', RegistrationView.as_view(success_url='/email'), name='django_registration_register'),
+    path('admin/', admin.site.urls),
+    path('', include('lite.urls')),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('logout/', auth_views.LogoutView.as_view()),  
+    path('accounts/login', LoginView.as_view(redirect_field_name ='/',success_url = '/'), name = 'login'),
+    path('accounts/logout',LogoutView.as_view(redirect_field_name ='/accounts/login')),
+    path('accounts/register/', RegistrationView.as_view(success_url='/email'), name='django_registration_register'),
 ]
