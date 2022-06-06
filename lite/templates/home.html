@@ -65,11 +65,30 @@
             </div>
             {% endif %}
         </div>
+        <!-- EDITING THIS PART -->
         <div class="col-xs-6 col-md-6">
             <div class="card">
                 <div class="card-header" style="font-size: 1rem; display: flex; justify-content: space-between!important;">
                     <p style="color: #8e8e8e;">Suggestions for you</p>
                     <a href="#" style="text-decoration: none; color:black"><strong>See All</strong></a>
+                </div>
+                <div style="font-size: 1rem; display: flex; justify-content: space-between!important;" class="p-3">
+                    <a href="/profile/{{prof.id}}">
+                        <img src="{% static 'images/willy.png'%}" alt="avatar" class="picture">&nbsp;&nbsp;The_Phenom
+                    </a>
+                    <a href="#" style="text-decoration: none;"><strong>Follow</strong></a>
+                </div>
+                <div style="font-size: 1rem; display: flex; justify-content: space-between!important;" class="p-3">
+                    <a href="/profile/{{prof.id}}">
+                        <img src="{% static 'images/Dru.png'%}" alt="avatar" class="picture">&nbsp;&nbsp;Drusade
+                    </a>
+                    <a href="#" style="text-decoration: none;"><strong>Follow</strong></a>
+                </div>
+                <div style="font-size: 1rem; display: flex; justify-content: space-between!important;" class="p-3">
+                    <a href="/profile/{{prof.id}}">
+                        <img src="{% static 'images/peter.png'%}" alt="avatar" class="picture">&nbsp;&nbsp;Pete_The-third
+                    </a>
+                    <a href="#" style="text-decoration: none;"><strong>Follow</strong></a>
                 </div>
                 <ul class="list-group list-group-flush">
                     {% for prof in suggestions %}
