@@ -6,13 +6,13 @@
             <img src="{% static 'images/instagram-logo.png' %}" alt="Instagram logo" title="Instagram logo" class="brand-img">
         </div>
         <div class="nav-items">
-            <a href="{% url 'home' %}"><img src="{% static 'images/nav-home.png' %}" class="icon" alt="home">
+            <a href="{% url 'home' %}" style="text-decoration: none;"><img src="{% static 'images/home.png' %}" class="icon" alt="home">
             </a>
-            <img src="{% static 'images/nav-messenger.png' %}" class="icon" alt="home">
+            <a><img src="{% static 'images/send.png' %}" class="icon" alt="home"></a>
             <a href="/upload/image"><img src="{% static 'images/nav-add.png' %}" class="icon" alt="add">
             </a>
-            <img src="{% static 'images/nav-compass.png' %}" class="icon" alt="explore">
-            <img src="{% static 'images/nav-heart.png' %}" class="icon" alt="heart">
+            <a><img src="{% static 'images/nav-compass.png' %}" class="icon" alt="explore"></a>
+            <a><img src="{% static 'images/nav-heart.png' %}" class="icon" alt="heart"></a>
             <div class="icon user-profile">
                 <i class="fas fa-user"></i>
             </div>
@@ -49,3 +49,5 @@
           </div>
     </div>
 </div>
+
+

@@ -3,9 +3,8 @@
 {% load bootstrap4 %}
 {% block content %}
 <div class="container">
-    <div class="mainrow">
-        <div class="col-xs-12 col-md-1"></div>
-        <div class="col-xs-12 col-md-6">
+    <div class="row">
+        <div class="col-xs-6 col-md-6">
             {% if images %} {% for image in images %}
             <div class="card" style="margin-bottom: 5rem;">
                 <div class="card-header display-flex">
@@ -15,28 +14,31 @@
                         </a>
                     </div>
                     <div class="profile">
-                        <a href="/profile/{{image.profile.id}}" class="profile_tag">{{image.profile}}</a>
+                        <a href="/profile/{{image.profile.id}}" class="profile_tag" style="font-weight:bold; font-size:1rem">{{image.profile}}</a>
                     </div>
                 </div>
-                <img src="{{image.image.url}}" class="card-img-top" alt="upload" style="height: 40rem; object-fit: cover" />
+                <img src="{{image.image.url}}" class="card-img-top" alt="upload" style="height: 40rem; object-fit:cover"/>
                 <div class="card-body">
                     <form action="{% url 'like_image' image_id=image.id %}">
                         {% csrf_token %}
-                        <button type="submit" name="image_id" value="{{image.id}}" style="border: 0px; background-color: transparent; margin-bottom: 1rem; ">
-                            <img src="{% static 'images/nav-heart.png' %}" class="icon" alt="heart">
+                        <button type="submit" name="image_id" value="{{image.id}}" style="border: 0px; background-color: transparent; margin-bottom: 1rem; display: flex; justify-content: space-around!important;">
+                            <img src="{% static 'images/nav-heart.png' %}" class="post-icon" alt="heart">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="#" style="text-decoration: none;"><img src="{% static 'images/comments.png' %}" class="post-icon" alt="comments">&nbsp;&nbsp;&nbsp;
+                            </a>
+                            <img src="{% static 'images/send.png' %}" class="post-icon" alt="send">
                         </button>    
                     </form>
-                    <div class="liked-count">{{image.likes.count}} likes</div>
+                    <div class="liked-count" style="font-size: 1rem;">{{image.likes.count}} likes</div>
                     <div class="post">
-                        <a href="#" class="likes">{{image.profile}}</a>
+                        <a href="#" class="likes" style="color: black;"><strong>{{image.profile}}</strong></a>
                         <span class="post-link">{{image.caption}}</span>
-                        <div class="text-muted" style="font-size: 1.4rem; margin-top: 1%">
+                        <div class="text-muted" style="font-size: 1rem; margin-top: 1%">
                             Comments...
                         </div>
                         {% for comment in comments %} {% if comment.image.id == image.id %}
                         <div>
-                            <a href="#" class="likes"><em style="font-size: 1.2rem">{{comment.user}}</em></a>
-                            <span class="post-link"><em style="font-size: 1.2rem">{{comment.content}}</em></span>
+                            <a href="#" class="likes"><strong style="font-size: 1rem; color: black;">{{comment.user}}</strong></a>
+                            <span class="post-link" style="font-size: 1rem; margin-bottom: 2vw;">{{comment.content}}</span>
                         </div>
                         {% endif %} {% endfor %}
                         <div class="text-muted">{{image.post_date | timesince }} ago</div> 
@@ -47,9 +49,9 @@
                         {% csrf_token %}
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Add a comment" name="comment"
-                                style="font-size: 1.2rem; border: 0;">
+                                style="font-size: 1rem; border: 0;">
                             <div class="input-group-btn">
-                                <button class="btn" type="submit" style="font-size: 1.2rem;"> Post</button>
+                                <button class="btn" type="submit" style="font-size: 1rem; opacity: 0.5;"> Post</button>
                             </div>
                         </div>
                     </form>
@@ -63,10 +65,12 @@
             </div>
             {% endif %}
         </div>
-        <div class="col-xs-12 col-md-1"></div>
-        <div class="col-xs-12 col-md-3">
+        <div class="col-xs-6 col-md-6">
             <div class="card">
-                <div class="card-header" style="font-size: 1.2rem;">Suggestions for you</div>
+                <div class="card-header" style="font-size: 1rem; display: flex; justify-content: space-between!important;">
+                    <p style="color: #8e8e8e;">Suggestions for you</p>
+                    <a href="#" style="text-decoration: none; color:black"><strong>See All</strong></a>
+                </div>
                 <ul class="list-group list-group-flush">
                     {% for prof in suggestions %}
                     {% if prof == loggedIn%}
@@ -76,32 +80,29 @@
                             <a href="/profile/{{prof.id}}"><img src="{{prof.profile_pic.url}}" alt="avatar" class="picture"></a>
                         </div>
                         <div class="profile">
-                            <a href="/profile/{{prof.id}}" class="profile_tag">{{prof.user.username}}</a>
+                            <a href="/profile/{{prof.id}}" class="profile_tag"><strong>{{prof.user.username}}</strong></a>                    
                         </div>
                     </li>
                     {% endif %}
                     {% endfor %}
                 </ul>
             </div>
+            <footer>
+                <ul class="flex flex-wrap justify-content-center main-footer" style="display: flex!important;  margin-top: 3vw; text-decoration: none!important;">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">API</a></li>
+                    <li><a href="#">Jobs</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Directory</a></li>
+                    <li><a href="#">Location</a></li>
+                    <li><a href="#">Languages</a></li>
+                </ul>
+                <p class="copyright-me">© 2022 Instagram from meta</p>
+            </footer>
         </div>
-        <div class="col-xs-12 col-md-1"></div>
     </div>
-    <hr>
-    <footer>
-        <ul class="flex flex-wrap justify-content-center" style="display: flex!important;  margin-top: 3vw;">
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Press</a></li>
-            <li><a href="#">API</a></li>
-            <li><a href="#">Jobs</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
-            <li><a href="#">Directory</a></li>
-            <li><a href="#">Profiles</a></li>
-            <li><a href="#">Hashtags</a></li>
-            <li><a href="#">Languages</a></li>
-        </ul>
-        <p class="copyright">© 2022 Instagram from Facebook</p>
-    </footer>
 </div>
 {% endblock %}
