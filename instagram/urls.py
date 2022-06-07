@@ -28,5 +28,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view()),  
     path('accounts/login', LoginView.as_view(redirect_field_name ='/',success_url = '/'), name = 'login'),
     path('accounts/logout',LogoutView.as_view(redirect_field_name ='/accounts/login')),
-    path('accounts/register/', RegistrationView.as_view(success_url='/email'), name='django_registration_register'),
+    path('accounts/register/', RegistrationView.as_view(success_url='/create_profile'), name='django_registration_register'),
 ]

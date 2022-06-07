@@ -1,12 +1,11 @@
 from django.urls import path
 from . import views
-from django.conf import settings
 
 urlpatterns=[
     path('',views.home,name='home'),
     path('email/',views.email,name='email'),
     path('create_profile/',views.create_profile,name = 'create_profile'),
-    path('profile/(<profile_id>\d+)',views.profile,name = 'profile'),
+    path('profile/<user_id>',views.profile,name = 'profile'),
     path('upload/image', views.upload_image, name = "upload_image"),
     path('search/',views.search,name ='search'),
     path('like/(<image_id>\d+)', views.like_image, name = 'like_image'),

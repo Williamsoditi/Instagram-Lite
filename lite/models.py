@@ -1,6 +1,8 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # Create your models here.
 class Profile(models.Model):
@@ -16,6 +18,19 @@ class Profile(models.Model):
     @classmethod
     def search_user(cls,username): 
         return User.objects.filter(username = username)
+
+    @receiver(post_save,sender=User)
+    def createUserProfile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+            
+    @receiver(post_save,sender=User)
+    def saveUserProfile(sender, instance, **kwargs):
+        instance.profile.save()
+    def saveProfile(self):
+        self.user()
+
+
 
 class Follow(models.Model): 
     posted = models.DateTimeField(auto_now_add=True)
