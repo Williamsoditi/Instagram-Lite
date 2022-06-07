@@ -73,20 +73,14 @@
                     <a href="#" style="text-decoration: none; color:black"><strong>See All</strong></a>
                 </div>
                 <div style="font-size: 1rem; display: flex; justify-content: space-between!important;" class="p-3">
-                    <a href="/profile/{{prof.id}}">
-                        <img src="{% static 'images/willy.png'%}" alt="avatar" class="picture">&nbsp;&nbsp;The_Phenom
+                    <a href="/profile/{{prof.id}}" style="color: black;font-weight: bold!important;">
+                        <img src="{% static 'images/willy.png'%}" alt="avatar" class="picture">&nbsp;&nbsp;&nbsp;&nbsp;The_Phenom
                     </a>
                     <a href="#" style="text-decoration: none;"><strong>Follow</strong></a>
                 </div>
                 <div style="font-size: 1rem; display: flex; justify-content: space-between!important;" class="p-3">
-                    <a href="/profile/{{prof.id}}">
-                        <img src="{% static 'images/Dru.png'%}" alt="avatar" class="picture">&nbsp;&nbsp;Drusade
-                    </a>
-                    <a href="#" style="text-decoration: none;"><strong>Follow</strong></a>
-                </div>
-                <div style="font-size: 1rem; display: flex; justify-content: space-between!important;" class="p-3">
-                    <a href="/profile/{{prof.id}}">
-                        <img src="{% static 'images/peter.png'%}" alt="avatar" class="picture">&nbsp;&nbsp;Pete_The-third
+                    <a href="/profile/{{prof.id}}" style="color: black;font-weight: bold!important;">
+                        <img src="{% static 'images/Dru.png'%}" alt="avatar" class="picture">&nbsp;&nbsp;&nbsp;&nbsp;Drusade
                     </a>
                     <a href="#" style="text-decoration: none;"><strong>Follow</strong></a>
                 </div>
@@ -99,7 +93,8 @@
                             <a href="/profile/{{prof.id}}"><img src="{{prof.profile_pic.url}}" alt="avatar" class="picture"></a>
                         </div>
                         <div class="profile">
-                            <a href="/profile/{{prof.id}}" class="profile_tag"><strong>{{prof.user.username}}</strong></a>                    
+                            <a href="/profile/{{prof.id}}" class="profile_tag" style="font-size: 1rem;"><strong>{{prof.user.username}}</strong></a>
+                            <a href="#" style="text-decoration: none"><strong>Follow</strong></a>                  
                         </div>
                     </li>
                     {% endif %}
