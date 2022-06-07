@@ -49,6 +49,7 @@
     color: rgba(0, 0, 0, 0.5);
     text-align: center;
     text-transform: capitalize;
+    margin-left: -2vw;
 }
 .field{
     margin-top: -3vw;
@@ -59,7 +60,8 @@
 .nav-items{
     height: 22px;
     position: relative;
-    margin-top: -0.5vw;
+    margin-top: -1.5vw;
+    margin-left: -2.5vw;
 }
 
 .icon{
@@ -213,7 +215,7 @@ footer .copyright {
     .nav-items{
         height: 20px;
         position: relative;
-        margin-top: -0.5vw;
+        margin-top: -4vw;
     }
     .navbar{
         position: relative;
@@ -272,5 +274,12 @@ footer .copyright {
     .home{
         margin-top: 9vw;
     }
+    .drop{
+        padding: 0%;
+        margin-left: -2vw;
+    }
 }
-
+.drop{
+    padding: 0%;
+    margin-left: -1vw;
+}

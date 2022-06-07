@@ -13,8 +13,16 @@
             </a>
             <a><img src="{% static 'images/nav-compass.png' %}" class="icon" alt="explore"></a>
             <a><img src="{% static 'images/nav-heart.png' %}" class="icon" alt="heart"></a>
-            <div class="icon user-profile">
-                <i class="fas fa-user"></i>
+            <div class="nav-item dropdown icon user-profile drop">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><i class="fas fa-user"></i></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/profile/{{request.user.id}}"><img style="height: 15px;width: 15px,!important;" src="{% static 'images/user.png' %}">&nbsp;&nbsp;Profile</a>
+                <a class="dropdown-item" href="/upload/image"><img style="height: 15px;width: 15px,!important;" src="{% static 'images/save-instagram.png' %}">&nbsp;&nbsp;Upload</a>
+                <a class="dropdown-item" href="#"><img style="height: 15px;width: 15px,!important;" src="{% static 'images/settings.png' %}">&nbsp;&nbsp;Settings</a>
+                <a class="dropdown-item" href="#"><img style="height: 15px;width: 15px,!important;" src="{% static 'images/swap.png' %}">&nbsp;&nbsp;Switch Accounts</a>
+                <hr>
+                <a class="dropdown-item" href="/logout">Log Out</a>
+              </div>
             </div>
         </div>
 
