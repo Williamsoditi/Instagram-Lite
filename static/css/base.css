@@ -278,6 +278,15 @@ footer .copyright {
         padding: 0%;
         margin-left: -2vw;
     }
+    .intro{
+        color: #8e8e8e;
+        color: rgba(var(--f52,142,142,142),1);
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 20px;
+        margin: 0 40px 10px;
+        text-align: center;
+    }
 }
 .drop{
     padding: 0%;
@@ -285,4 +294,11 @@ footer .copyright {
 }
 .bug{
     margin-top: 10vw;
+}
+.bugs{
+    margin-top: 3vw;
+}
+.btn-primary{
+    background-color: #3897f0!important;
+    border: 1px solid #3897f0!important;
 }

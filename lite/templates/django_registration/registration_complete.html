@@ -2,7 +2,37 @@
 {% load static %}
 {% load bootstrap4 %}
 {% block content %}
-<div class="container">
-    <a href="/create_profile"><button class="btn">Create-Profile now</button></a>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="{% static 'images/welcome.jpg' %}" alt="welcome" class="rounded img-fluid bug" style="margin-top:6vw!important;">
+        </div>
+        <div class="col-sm-6">
+            <div class="bug">
+                <p>Get started on Instagram by following an Instagram user or share an image to see images on the timeline.</p>
+                <p>Update your profile to increase profile visibility for other Instagram users.</p>
+            </div>
+            <a href="/create_profile/"><button class="btn btn-primary btn-sm bugs">Update profile now</button></a>
+        </div>
+    </div>
 </div>
+<div class="container-fluid">
+    <footer style="margin-top: 5vw;">
+      <hr>
+      <ul class="flex flex-wrap justify-content-center" style="display: flex!important;  margin-top: 3vw;">
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">API</a></li>
+        <li><a href="#">Jobs</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Directory</a></li>
+        <li><a href="#">Profiles</a></li>
+        <li><a href="#">Hashtags</a></li>
+        <li><a href="#">Languages</a></li>
+      </ul>
+      <p class="copyright">© 2022 Instagram from meta</p>
+    </footer>
+  </div>
 {% endblock %}
