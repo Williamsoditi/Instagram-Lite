@@ -7,6 +7,7 @@ from django.db.models.signals import post_save
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
+    name = models.CharField(max_length=80, blank=True)
     profile_pic = CloudinaryField('image')
     bio =  models.TextField(blank=True)
     followers = models.IntegerField(default=0)
@@ -16,8 +17,8 @@ class Profile(models.Model):
         return self.user.username
 
     @classmethod
-    def search_user(cls,username): 
-        return User.objects.filter(username = username)
+    def search_profile(cls, name):
+        return cls.objects.filter(user__username__icontains=name).all()
 
     @receiver(post_save,sender=User)
     def createUserProfile(sender, instance, created, **kwargs):
@@ -29,7 +30,6 @@ class Profile(models.Model):
         instance.profile.save()
     def saveProfile(self):
         self.user()
-
 
 
 class Follow(models.Model): 

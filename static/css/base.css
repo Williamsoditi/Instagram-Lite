@@ -302,3 +302,17 @@ footer .copyright {
     background-color: #3897f0!important;
     border: 1px solid #3897f0!important;
 }
+.searches{
+    margin-top: 80%!important;
+    padding-top: 50%!important;
+}
+.result{
+    margin-top: 7vw;
+}
+.rectify{
+    margin-top: 7vw;
+}
+.search-text{
+    align-items: center;
+    margin-top: 5vw;
+}
