@@ -8,17 +8,11 @@
 *:focus{
     outline: none;
 }
-/* .navigation{
-    display: flex;
-    justify-content: space-between;
-    height: 6rem;
-    top: 0;
-    z-index: 3;
-    background-color: #fff;
-    padding: 0 5%;
-} */
+.home{
+    margin-top: 5vw;
+}
 .navbar{
-    position: relative;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -274,6 +268,9 @@ footer .copyright {
     }
     .search-box::placeholder{
         color: rgba(0, 0, 0, 0.5);
+    }
+    .home{
+        margin-top: 9vw;
     }
 }
 
