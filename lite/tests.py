@@ -20,7 +20,7 @@ class ProfileTestClass(TestCase):
         self.assertTrue(isinstance(self.profile, Profile))
 
     def test_search_user(self):
-        user = Profile.search_user(self.williams)
+        user = Profile.search_profile(self.williams)
         self.assertEqual(len(user), 1)
 
 # Follow model tests
@@ -41,7 +41,7 @@ class FollowTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.follow,Follow))
 
-# Comment model test
+#Comment model test
 class CommentTestClass(TestCase):
     def setUp(self):
         self.williams = User(username = "williams", email = "williamsoditi99@gmail.com",password = "123qwerty")
@@ -77,7 +77,7 @@ class CommentTestClass(TestCase):
         self.assertEqual(comments[0].content, 'Killer instinct')
         self.assertTrue(len(comments) > 0)
 
-# Image model test
+#Image model test
 class ImageTestClass(TestCase):
     def setUp(self):
         self.williams = User(username = "williams", email = "williamsoditi99@yahoo.com",password = "123qwerty")

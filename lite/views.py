@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Image, Profile, Comment, Follow
 from .forms import CreateProfileForm, UploadImageForm, FollowForm, UnfollowForm, EditBioForm
 from django.http import HttpResponseRedirect, Http404
@@ -145,92 +145,14 @@ def search_profile(request):
     return render(request, 'search.html', {'message': message})
 
 
-
-# def search(request):
-#     if "user" in request.GET and request.GET["user"]
-#         searched_user = request.GET.get("user")
-#         try:
-#             user = Profile.search_user(searched_user)
-#             profile_id = user[0].id
-#             title= user[0].username
-#         except User.DoesNotExist:
-#             raise Http404()    
-#         current_user = request.user
-#         try:
-#             profile = Profile.objects.get(id =profile_id)
-#         except Profile.DoesNotExist:
-#             raise Http404()
-#         try:
-#             profile_following = Profile.objects.get(user = current_user)
-#         except Profile.DoesNotExist:
-#             raise Http404()
-#         try:
-#             profile_followed = Profile.objects.get(id = profile_id)
-#         except Profile.DoesNotExist:
-#             raise Http404()
-
-#         if request.method == 'POST':
-#             if 'follow' in request.POST:
-#                 form = FollowForm(request.POST)
-#                 if form.is_valid():
-#                     this_follow = form.save(commit=False)
-#                     this_follow.followed=profile_followed
-#                     this_follow.follower=profile_following
-#                     this_follow.save()
-#                     set_of_followers=Follow.objects.filter(followed = profile_followed)
-#                     num_of_followers=len(set_of_followers)
-#                     profile_followed.followers=num_of_followers
-#                     profile_followed.save()
-#                     set_of_following=Follow.objects.filter(follower = profile_following)
-#                     num_of_following=len(set_of_following)
-#                     profile_following.following=num_of_following
-#                     profile_following.save()
-#                 return HttpResponseRedirect(f'/profile/{profile_id}')
-            
-#             elif 'unfollow' in request.POST:
-#                 form = UnfollowForm(request.POST)
-#                 if form.is_valid():
-#                     this_unfollow = form.save(commit=False)
-#                     is_unfollow = Follow.objects.filter(followed = profile_followed, follower = profile_following)
-#                     is_unfollow.delete()                
-#                     set_of_followers=Follow.objects.filter(followed = profile_followed)
-#                     num_of_followers=len(set_of_followers)
-#                     profile_followed.followers=num_of_followers
-#                     profile_followed.save()
-#                     set_of_following=Follow.objects.filter(follower = profile_following)
-#                     num_of_following=len(set_of_following)
-#                     profile_following.following=num_of_following
-#                     profile_following.save()
-#                 return HttpResponseRedirect(f'/profile/{profile_id}')
-
-#         else:
-#             form_follow = FollowForm()
-#             form_unfollow = UnfollowForm()
-        
-#         images = Image.objects.filter(profile = profile).order_by('-post_date')
-#         images = Image.get_profile_images(profile = profile)
-#         images = Image.objects.filter(profile = profile).order_by('-post_date')
-#         posts = images.count()  
-
-#         is_following = Follow.objects.filter(followed = profile_followed, follower = profile_following) 
-#         comments = Comment.objects.order_by('-post_date')   
-
-#         if is_following:
-#             return render(request, 'search.html', {"profile": profile, "images": images, "comments":comments, "unfollow_form": form_unfollow, "posts": posts, "title": title})
-
-#         return render(request, 'search.html', {"profile": profile, "images": images, "comments":comments, "follow_form": form_follow, "posts": posts, "title": title, "search":searched_user})
-
-#     else:
-#         no_search="You did not search for any user"
-#         return render(request, 'search.html',{"no_search":no_search})
-
 # Profile view
 @login_required(login_url='/accounts/login/')
-def profile(request,user_id):
-        profile=Profile.objects.get(id=user_id)
-        # image = request.user.profile.image.all()
-        context = {'profile':profile}
-        return render(request, 'profile/profile.html', context)
+def profile(request,profile_id):
+    profile = Profile.objects.get(id=profile_id)
+    # image = request.user.profile.image.all()
+    context = {'profile':profile}
+    return render(request, 'profile/profile.html', context)
+
 
 
 # @login_required(login_url='/accounts/login/')
