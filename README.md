@@ -10,6 +10,13 @@
 
 ## Description
 A clone of the popular Instagram application. Users are able to upload images, follow other users to see their photos, like and comment on photos.
+
+![Project-design](/static/images/Screenshot%20from%202022-06-08%2011-39-52.png)
+
+The following is a live link to the project:
+[Click here](https://gram-lite.herokuapp.com/)
+
+
 ## Installation process
 To access my repository link:
 [Click here](https://github.com/Williamsoditi/Instagram-Lite.git)
