@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, redirect
 from .models import Image, Profile, Comment, Follow
 from .forms import CreateProfileForm, UploadImageForm, FollowForm, UnfollowForm, EditBioForm
 from django.http import HttpResponseRedirect, Http404
@@ -147,12 +147,11 @@ def search_profile(request):
 
 # Profile view
 @login_required(login_url='/accounts/login/')
-def profile(request,profile_id):
-    profile = Profile.objects.get(id=profile_id)
-    # image = request.user.profile.image.all()
-    context = {'profile':profile}
-    return render(request, 'profile/profile.html', context)
-
+def profile(request,user_id):
+        profile=Profile.objects.get(id=user_id)
+        # image = request.user.profile.image.all()
+        context = {'profile':profile}
+        return render(request, 'profile/profile.html', context)
 
 
 # @login_required(login_url='/accounts/login/')
