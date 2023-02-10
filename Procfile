@@ -1,1 +1,1 @@
-web: gunicorn instagram.wsgi --log-file -
+web: python manage.py migrate && gunicorn Core.wsgi
